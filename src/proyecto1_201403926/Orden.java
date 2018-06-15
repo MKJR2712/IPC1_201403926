@@ -5,17 +5,33 @@
  */
 package proyecto1_201403926;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MKJR
  */
 public class Orden extends javax.swing.JFrame {
-
+    private String pl1,pl2;
+    private int tam,tiempo,a1,a2,a3,a4,a5,a6;
+    Variables var;
     /**
      * Creates new form Orden
      */
-    public Orden() {
+    public Orden(Variables var){
+        this.var = var;
+        setSize(330, 265);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        this.pl1=var.getPl1();
+        this.pl2=var.getPl2();
+        this.tam= var.getTam();
+        this.tiempo=var.getTiempo();
         initComponents();
+        P1.setText(pl1);
+        P2.setText(pl2);
     }
 
     /**
@@ -27,57 +43,251 @@ public class Orden extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        P1 = new javax.swing.JLabel();
+        P2 = new javax.swing.JLabel();
+        P3 = new javax.swing.JLabel();
+        P4 = new javax.swing.JLabel();
+        P5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        P6 = new javax.swing.JLabel();
+        P7 = new javax.swing.JLabel();
+        P8 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox();
+        jComboBox6 = new javax.swing.JComboBox();
+        continuar = new javax.swing.JButton();
+        regreso = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        P1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P1.setText("Jugador1");
+
+        P2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P2.setText("Jugador2");
+
+        P3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P3.setText("Personaje 2");
+
+        P4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P4.setText("Personaje 1");
+
+        P5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P5.setText("Personaje 3");
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+
+        jComboBox2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox2.setSelectedIndex(1);
+
+        jComboBox3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox3.setSelectedIndex(2);
+
+        jComboBox4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox4.setSelectedIndex(2);
+
+        P6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P6.setText("Personaje 2");
+
+        P7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P7.setText("Personaje 1");
+
+        P8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        P8.setText("Personaje 3");
+
+        jComboBox5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+
+        jComboBox6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox6.setSelectedIndex(1);
+
+        continuar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        continuar.setText("Continuar");
+        continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                continuarActionPerformed(evt);
+            }
+        });
+
+        regreso.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        regreso.setText("Regresar");
+        regreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(109, 109, 109))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(continuar)
+                .addGap(42, 42, 42)
+                .addComponent(regreso)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(continuar)
+                    .addComponent(regreso))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
+        a1= var.abc[0]=jComboBox1.getSelectedIndex();
+        a2= var.abc[1]=jComboBox2.getSelectedIndex();
+        a3= var.abc[2]=jComboBox3.getSelectedIndex();
+        a4= var.abc[3]=jComboBox4.getSelectedIndex();
+        a5= var.abc[4]=jComboBox5.getSelectedIndex();
+        a6= var.abc[5]=jComboBox6.getSelectedIndex();
+        int j = 0;
+        for (int i =0; i<3;i++){
+            switch(var.abc[i]){
+                case 0:
+                    var.orden[j]= 4;
+                    var.per[j]="Mago";
+                break;
+                case 1:
+                    var.orden[j]= 5;
+                    var.per[j]="Princesa";
+                break;
+                case 2:
+                    var.orden[j]= 3;
+                    var.per[j]="Caballero";
+                break;
+            }
+            j+=2;
+        }
+        j = 1;
+        for(int i =3;i<6;i++){
+            switch(var.abc[i]){
+                case 0:
+                    var.orden[j]= 7;
+                    var.per[j]="Mago";
+                break;
+                case 1:
+                    var.orden[j]= 8;
+                    var.per[j]="Princesa";
+                break;
+                case 2:
+                    var.orden[j]= 6;
+                    var.per[j]="Caballero";
+                break;
+            }
+            j+=2;
+        }    
+        if ((a1==a2||a1==a3||a2==a3)||(a4==a5||a4==a6||a5==a6)){
+            JOptionPane.showMessageDialog(null, "No puede tener dos personajes iguales");
+        }else{
+            this.setVisible(false);
+            Principal prin = new Principal(var);
+        }    
+    }//GEN-LAST:event_continuarActionPerformed
+
+    private void regresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresoActionPerformed
+        this.setVisible(false);
+        Inicio ini = new Inicio(var);
+        ini.setVisible(true);
+    }//GEN-LAST:event_regresoActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Orden.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Orden.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Orden.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Orden.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Orden().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel P1;
+    private javax.swing.JLabel P2;
+    private javax.swing.JLabel P3;
+    private javax.swing.JLabel P4;
+    private javax.swing.JLabel P5;
+    private javax.swing.JLabel P6;
+    private javax.swing.JLabel P7;
+    private javax.swing.JLabel P8;
+    private javax.swing.JButton continuar;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox jComboBox5;
+    private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton regreso;
     // End of variables declaration//GEN-END:variables
 }
