@@ -18,8 +18,9 @@ import java.util.Random;
 public class Posicion {
     private int ranx,rany,dim,bomb,heart,temp=0;
     private boolean per;
+    Variables var;
     
-    public Posicion(Variables var){
+    public Posicion(){
         int tam = var.getTam();
         dim = tam*tam;
         bomb = dim/10;
@@ -49,6 +50,8 @@ public class Posicion {
                 rany = rn.nextInt(tam-1);
                 if(var.interior[ranx][rany]==0){
                     var.interior[ranx][rany]=i;
+                    var.posperx[i-3]=ranx;
+                    var.pospery[i-3]=rany;
                     per=true;
                 }
             }

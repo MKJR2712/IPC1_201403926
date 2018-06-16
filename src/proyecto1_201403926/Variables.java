@@ -15,9 +15,27 @@ public class Variables {
     public int [][] interior;
     private String pl1,pl2;
     public int[] orden =new int[6];
-    public int[] abc = new int[6];
+    public int[] abc=new int[6];
+    public int[] posperx= new int[6];
+    public int[] pospery= new int[6];
     public String[] per=new String[6];
 
+    public int getMov() {
+        return mov;
+    }
+
+    public void setMov(int mov) {
+        this.mov = mov;
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+    
     public int getTam() {
         return tam;
     }

@@ -8,39 +8,41 @@ package proyecto1_201403926;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  *
  * @author MKJR
  */
-public class Principal extends javax.swing.JFrame {
+public class Principal extends javax.swing.JFrame{
     /**
      * Creates new form Principal
      */
     
     private JPanel tablero,vid1,vid2;
-    private JLabel [][] matriz,vd1,vd2;
-    private int tammat, tiempo,mov;
+    public JLabel [][] matriz,vd1,vd2;
+    private int tammat,mov,turno=0;
+    public int sec=0,min=0,tiempo;
     private String pl1,pl2;
-    public Imagenes fondo;
+    public Imagenes img;
+    public Variables var;
+    public boolean juego = true;
     public void init(){
         setLayout(null);
         setSize(1200, 720);
         setVisible(true);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
-
+        
     }
-    public Principal(Variables var){
+    public Principal(){
         this.pl1 = var.getPl1();
         this.pl2 = var.getPl2();
         this.tammat = var.getTam();
+        this.var=var;
+        var.setTurno(turno);
         init();
         initComponents();
         jLabel1.setText(pl1);
@@ -52,20 +54,20 @@ public class Principal extends javax.swing.JFrame {
         add(getVid2());
         Imagenes img=new Imagenes();
         dado.setIcon(img.Dado1());
-        Posicion pos = new Posicion(var);
-        imprimirPersona(var,img);
+        Posicion pos = new Posicion();
+        imprimirPersona();
         colcor1(var,img);
         colcor2(var,img);
         jLabel5.setText(var.per[0]);
         jLabel6.setText(var.per[2]);
         jLabel7.setText(var.per[4]);
-        jLabel10.setText(var.per[1]);
-        jLabel11.setText(var.per[3]);
-        jLabel8.setText(var.per[5]);
-        
+        jLabel1.setText(var.per[1]);
+        jLabel8.setText(var.per[3]);
+        jLabel10.setText(var.per[5]);
         this.tiempo = var.getTiempo();
-        
+        Temporizador temp=new Temporizador(this);
     }
+        
     public void colcor1(Variables var,Imagenes img){
         int as = 20;
         int i = var.getVida1()/4;
@@ -164,8 +166,8 @@ public class Principal extends javax.swing.JFrame {
         
         return vid2;
     }
-    
-    public void imprimirPersona(Variables var, Imagenes img){
+   
+    public void imprimirPersona(){
         for (int i=0; i<var.getTam();i++){
             for (int j=0;j<var.getTam();j++){
                 switch(var.interior[i][j]){
@@ -222,6 +224,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         dado = new javax.swing.JLabel();
         tirar = new javax.swing.JButton();
+        arriba = new javax.swing.JButton();
+        der = new javax.swing.JButton();
+        izq = new javax.swing.JButton();
+        abajo = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -239,7 +245,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setText("Jugador2");
 
         timer.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        timer.setEnabled(false);
 
         jPanel1.setOpaque(false);
 
@@ -301,6 +306,42 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        arriba.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        arriba.setText("Arriba");
+        arriba.setEnabled(false);
+        arriba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arribaActionPerformed(evt);
+            }
+        });
+
+        der.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        der.setText("Derecha");
+        der.setEnabled(false);
+        der.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                derActionPerformed(evt);
+            }
+        });
+
+        izq.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        izq.setText("Izquierda");
+        izq.setEnabled(false);
+        izq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                izqActionPerformed(evt);
+            }
+        });
+
+        abajo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        abajo.setText("Abajo");
+        abajo.setEnabled(false);
+        abajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abajoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,31 +350,40 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(timer, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(dado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(timer, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(arriba, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(dado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tirar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                            .addComponent(tirar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(izq)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(der)))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,14 +406,14 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addGap(101, 101, 101)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
+                        .addGap(178, 178, 178)
                         .addComponent(dado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -372,7 +422,15 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addGap(140, 140, 140)
                         .addComponent(tirar)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(arriba)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(izq)
+                    .addComponent(der))
+                .addGap(10, 10, 10)
+                .addComponent(abajo)
+                .addContainerGap(80, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -380,7 +438,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirarActionPerformed
-        mov=(int)(Math.random()*7);
+        mov=(int)((Math.random()*6)+1);
+        var.setMov(mov);
         Imagenes img = new Imagenes();
         switch(mov){
             case 1:
@@ -402,13 +461,44 @@ public class Principal extends javax.swing.JFrame {
                 dado.setIcon(img.Dado6());
                 break;
         }
+        tirar.setEnabled(false);
+        arriba.setEnabled(true);
+        abajo.setEnabled(true);
+        izq.setEnabled(true);
+        der.setEnabled(true);
+        ++turno;
+        if(turno>=6){
+            turno=0;
+        }
+        var.setTurno(turno);
     }//GEN-LAST:event_tirarActionPerformed
+
+    private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
+        MovUp movup = new MovUp();
+        
+    }//GEN-LAST:event_arribaActionPerformed
+
+    private void derActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_derActionPerformed
+
+    private void izqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_izqActionPerformed
+
+    private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_abajoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abajo;
+    private javax.swing.JButton arriba;
     private javax.swing.JLabel dado;
+    private javax.swing.JButton der;
+    private javax.swing.JButton izq;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -422,7 +512,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel timer;
+    public javax.swing.JLabel timer;
     private javax.swing.JButton tirar;
     // End of variables declaration//GEN-END:variables
 }

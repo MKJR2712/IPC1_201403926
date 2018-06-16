@@ -17,13 +17,15 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    
     public Inicio() {
+        
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         ((DefaultEditor)timer.getEditor()).getTextField().setEditable(false);
     }
-    public Inicio(Variables var){
+    public void regreso(Variables var){    
         initComponents();
         p1.setText(var.getPl1());
         p2.setText(var.getPl2());
@@ -170,7 +172,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        Variables var = new Variables();
+        Variables var=new Variables();
         var.setPl1(p1.getText());
         if ("".equals(var.getPl1())) {
             var.setPl1("Jugador1");
@@ -183,7 +185,7 @@ public class Inicio extends javax.swing.JFrame {
         var.setTiempo(Integer.parseInt(timer.getValue().toString()));
         var.interior = new int [var.getTam()][var.getTam()];
         this.setVisible(false);
-        Orden or = new Orden(var);
+        Orden or = new Orden();
         
     }//GEN-LAST:event_continuarActionPerformed
 
