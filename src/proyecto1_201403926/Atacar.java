@@ -26,25 +26,25 @@ public class Atacar {
                 for(int i=1;i<3;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==4||var.interior[ejey-i][ejex]==6||var.interior[ejey-i][ejex]==8){
-                            var.setVida2(v2-1);
+                            var.setVida2(v2-2);
                             prin.colcor2(var);
                         }
                     }
                     if(ejey+i<tam){
                         if(var.interior[ejey+i][ejex]==4||var.interior[ejey+i][ejex]==6||var.interior[ejey+i][ejex]==8){
-                            var.setVida2(v2-1);
+                            var.setVida2(v2-2);
                             prin.colcor2(var);
                         }
                     }
                     if(ejex+i<tam){
                         if(var.interior[ejey][ejex+i]==4||var.interior[ejey][ejex+i]==6||var.interior[ejey][ejex+i]==8){
-                            var.setVida2(v2-1);
+                            var.setVida2(v2-2);
                             prin.colcor2(var);
                         }
                     }
                     if(ejex-i>0){
                         if(var.interior[ejey][ejex-i]==4||var.interior[ejey][ejex-i]==6||var.interior[ejey][ejex-i]==8){
-                            var.setVida2(v2-1);
+                            var.setVida2(v2-2);
                             prin.colcor2(var);
                         }
                     }
@@ -175,7 +175,7 @@ public class Atacar {
                 for(int i=1;i<3;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==3||var.interior[ejey-i][ejex]==5||var.interior[ejey-i][ejex]==7){
-                            var.setVida1(v1-1);
+                            var.setVida1(v1-2);
                             prin.colcor1(var);
                         }
                     }
@@ -187,13 +187,13 @@ public class Atacar {
                     }
                     if(ejex+i<tam){
                         if(var.interior[ejey][ejex+i]==3||var.interior[ejey][ejex+i]==5||var.interior[ejey][ejex+i]==7){
-                            var.setVida1(v1-1);
+                            var.setVida1(v1-2);
                             prin.colcor1(var);
                         }
                     }
                     if(ejex-i>0){
                         if(var.interior[ejey][ejex-i]==3||var.interior[ejey][ejex-i]==2||var.interior[ejey][ejex-i]==7){
-                            var.setVida1(v1-1);
+                            var.setVida1(v1-2);
                             prin.colcor1(var);
                         }
                     }
