@@ -11,7 +11,7 @@ package proyecto1_201403926;
  * @author MKJR
  */
 public class Variables {
-    private int tam,tiempo,vida1,vida2,mov,turno;
+    private int tam=0,tiempo=0,vida1=0,vida2=0,mov=0,turno=0;
     public int [][] interior;
     private String pl1,pl2;
     public int[] orden =new int[6];

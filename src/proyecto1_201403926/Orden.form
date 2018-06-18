@@ -89,7 +89,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="P4" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -99,18 +99,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="P5" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Component id="P2" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="P7" min="-2" pref="20" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Component id="P6" min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="P2" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
@@ -119,12 +109,18 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="P7" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="jComboBox5" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="P6" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="P8" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -187,9 +183,9 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
           </StringArray>
         </Property>
       </Properties>
@@ -201,9 +197,9 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="1"/>
@@ -216,9 +212,9 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="2"/>
@@ -231,9 +227,9 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
           </StringArray>
         </Property>
       </Properties>
@@ -268,10 +264,11 @@
           <Font name="Arial" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
+            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="1"/>
@@ -283,10 +280,11 @@
           <Font name="Arial" size="12" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Mago"/>
-            <StringItem index="1" value="Princesa"/>
-            <StringItem index="2" value="Caballero"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Caballero"/>
+            <StringItem index="1" value="Mago"/>
+            <StringItem index="2" value="Princesa"/>
+            <StringItem index="3" value=""/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="2"/>

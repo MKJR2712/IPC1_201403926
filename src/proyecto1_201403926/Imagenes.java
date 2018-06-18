@@ -16,66 +16,66 @@ public class Imagenes {
     public int posper = 0;
     public ImageIcon imagper;
     
-    public ImageIcon Fondo (int tamx){
+    public ImageIcon Fondo (){
         ImageIcon fon = new ImageIcon(getClass().getResource("/Imagenes/background.jpg"));
         Image fondo = fon.getImage();
-        Image imgtam = fondo.getScaledInstance(700,750,Image.SCALE_SMOOTH);
+        Image imgtam = fondo.getScaledInstance(700,700,Image.SCALE_SMOOTH);
         fon = new ImageIcon(imgtam);
         return fon;
     }
     public ImageIcon bomba (int tamx){
         ImageIcon bom = new ImageIcon(getClass().getResource("/Imagenes/bomba.png"));
         Image fondo = bom.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         bom = new ImageIcon(imgtam);
         return bom;
     }
     public ImageIcon corazon (int tamx){
         ImageIcon cor = new ImageIcon(getClass().getResource("/Imagenes/corazon.png"));
         Image fondo = cor.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         cor = new ImageIcon(imgtam);
         return cor;
     }
     public ImageIcon Prin1 (int tamx){
         ImageIcon zelda = new ImageIcon(getClass().getResource("/Imagenes/adutlzelda.png"));
         Image fondo = zelda.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         zelda = new ImageIcon(imgtam);
         return zelda;
     }
     public ImageIcon Prin2 (int tamx){
         ImageIcon toonzelda = new ImageIcon(getClass().getResource("/Imagenes/toonzelda.png"));
         Image fondo = toonzelda.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         toonzelda = new ImageIcon(imgtam);
         return toonzelda;
     }
     public ImageIcon Cab1 (int tamx){
         ImageIcon link = new ImageIcon(getClass().getResource("/Imagenes/Link_TP.png"));
         Image fondo = link.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         link = new ImageIcon(imgtam);
         return link;
     }
     public ImageIcon Cab2 (int tamx){
         ImageIcon toonlink = new ImageIcon(getClass().getResource("/Imagenes/toon link.png"));
         Image fondo = toonlink.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         toonlink = new ImageIcon(imgtam);
         return toonlink;
     }
     public ImageIcon Mag1 (int tamx){
         ImageIcon ganon = new ImageIcon(getClass().getResource("/Imagenes/ganon.png"));
         Image fondo = ganon.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         ganon = new ImageIcon(imgtam);
         return ganon;
     }
     public ImageIcon Mag2 (int tamx){
         ImageIcon toonganon = new ImageIcon(getClass().getResource("/Imagenes/toon ganon.png"));
         Image fondo = toonganon.getImage();
-        Image imgtam=fondo.getScaledInstance(650/tamx, 650/tamx, Image.SCALE_SMOOTH);
+        Image imgtam=fondo.getScaledInstance(700/tamx, 700/tamx, Image.SCALE_SMOOTH);
         toonganon = new ImageIcon(imgtam);
         return toonganon;
     }

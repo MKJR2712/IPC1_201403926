@@ -17,15 +17,15 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    public Variables var = new Variables();
     
     public Inicio() {
-        
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         ((DefaultEditor)timer.getEditor()).getTextField().setEditable(false);
     }
-    public void regreso(Variables var){    
+    public void regreso(){    
         initComponents();
         p1.setText(var.getPl1());
         p2.setText(var.getPl2());
@@ -70,11 +70,6 @@ public class Inicio extends javax.swing.JFrame {
         combo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
         combo.setActionCommand("<none>");
-        combo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboActionPerformed(evt);
-            }
-        });
 
         continuar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         continuar.setText("Continuar");
@@ -89,11 +84,6 @@ public class Inicio extends javax.swing.JFrame {
 
         p2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         p2.setText("Jugador2");
-        p2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                p2ActionPerformed(evt);
-            }
-        });
 
         label2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,11 +92,6 @@ public class Inicio extends javax.swing.JFrame {
         timer.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         timer.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         timer.setEditor(new javax.swing.JSpinner.NumberEditor(timer, "00"));
-        timer.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                timerStateChanged(evt);
-            }
-        });
 
         salir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         salir.setText("Salir");
@@ -172,7 +157,6 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        Variables var=new Variables();
         var.setPl1(p1.getText());
         if ("".equals(var.getPl1())) {
             var.setPl1("Jugador1");
@@ -181,25 +165,13 @@ public class Inicio extends javax.swing.JFrame {
         if ("".equals(var.getPl2())){
             var.setPl2("Jugador2");
         }
-        var.setTam(combo.getSelectedIndex()+8);
+        int tam=combo.getSelectedIndex()+8;
+        var.setTam(tam);
         var.setTiempo(Integer.parseInt(timer.getValue().toString()));
-        var.interior = new int [var.getTam()][var.getTam()];
+        var.interior = new int [tam][tam];
         this.setVisible(false);
-        Orden or = new Orden();
-        
+        Orden or = new Orden(var);
     }//GEN-LAST:event_continuarActionPerformed
-
-    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
-
-    }//GEN-LAST:event_comboActionPerformed
-
-    private void p2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_p2ActionPerformed
-
-    private void timerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_timerStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_timerStateChanged
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);

@@ -15,22 +15,24 @@ import javax.swing.JOptionPane;
 public class Orden extends javax.swing.JFrame {
     private String pl1,pl2;
     private int tam,tiempo,a1,a2,a3,a4,a5,a6;
-    Variables var;
+    public Variables var;
     /**
      * Creates new form Orden
      */
-    public Orden(){
+    public Orden(Variables var){
         setSize(330, 265);
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         initComponents();
-        this.pl1=var.getPl1();
-        this.pl2=var.getPl2();
-        this.tam= var.getTam();
-        this.tiempo=var.getTiempo();
+        this.var=var;
+        pl1=var.getPl1();
+        pl2=var.getPl2();
+        tam= var.getTam();
+        tiempo=var.getTiempo();
         P1.setText(pl1);
         P2.setText(pl2);
+        
     }
 
     /**
@@ -80,18 +82,19 @@ public class Orden extends javax.swing.JFrame {
         P5.setText("Personaje 3");
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa" }));
 
         jComboBox2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa" }));
         jComboBox2.setSelectedIndex(1);
 
         jComboBox3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa" }));
         jComboBox3.setSelectedIndex(2);
 
         jComboBox4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa" }));
+        jComboBox4.setSelectedIndex(0);
 
         P6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         P6.setText("Personaje 2");
@@ -103,11 +106,11 @@ public class Orden extends javax.swing.JFrame {
         P8.setText("Personaje 3");
 
         jComboBox5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa", " " }));
         jComboBox5.setSelectedIndex(1);
 
         jComboBox6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mago", "Princesa", "Caballero" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Caballero", "Mago", "Princesa", "" }));
         jComboBox6.setSelectedIndex(2);
 
         continuar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -175,7 +178,7 @@ public class Orden extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,15 +187,8 @@ public class Orden extends javax.swing.JFrame {
                             .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(67, 67, 67)
+                        .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,10 +196,14 @@ public class Orden extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,66 +218,69 @@ public class Orden extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        var.abc[0]=jComboBox1.getSelectedIndex();
-        var.abc[1]=jComboBox2.getSelectedIndex();
-        var.abc[2]=jComboBox3.getSelectedIndex();
-        var.abc[3]=jComboBox4.getSelectedIndex();
-        var.abc[4]=jComboBox5.getSelectedIndex();
-        var.abc[5]=jComboBox6.getSelectedIndex();
+        var.abc[0] = jComboBox1.getSelectedIndex();
+        var.abc[1] = jComboBox4.getSelectedIndex();
+        var.abc[2] = jComboBox2.getSelectedIndex();
+        var.abc[3] = jComboBox5.getSelectedIndex();
+        var.abc[4] = jComboBox3.getSelectedIndex();
+        var.abc[5] = jComboBox6.getSelectedIndex();
         a1=var.abc[0];
         a2=var.abc[1];
         a3=var.abc[2];
         a4=var.abc[3];
         a5=var.abc[4];
         a6=var.abc[5];     
-        int j = 0;
-        for (int i =0; i<3;i++){
+        int i = 0;
+        while (i<=4){
             switch(var.abc[i]){
                 case 0:
-                    var.orden[j]= 4;
-                    var.per[j]="Mago";
+                    var.orden[i]= 3;
+                    var.per[i]="Caballero";
                 break;
                 case 1:
-                    var.orden[j]= 5;
-                    var.per[j]="Princesa";
+                    var.orden[i]= 5;
+                    var.per[i]="Mago";
                 break;
                 case 2:
-                    var.orden[j]= 3;
-                    var.per[j]="Caballero";
+                    var.orden[i]= 7;
+                    var.per[i]="Princesa";
                 break;
             }
-            j+=2;
+            i=i+2;
         }
-        j = 1;
-        for(int i =3;i<6;i++){
+        i = 1;
+        while(i<=5){
             switch(var.abc[i]){
                 case 0:
-                    var.orden[j]= 7;
-                    var.per[j]="Mago";
+                    var.orden[i]= 4;
+                    var.per[i]="Caballero";
                 break;
                 case 1:
-                    var.orden[j]= 8;
-                    var.per[j]="Princesa";
+                    var.orden[i]= 6;
+                    var.per[i]="Mago";
                 break;
                 case 2:
-                    var.orden[j]= 6;
-                    var.per[j]="Caballero";
+                    var.orden[i]= 8;
+                    var.per[i]="Princesa";
                 break;
             }
-            j+=2;
+            i=i+2;
         }
-        if ((a1==a2||a1==a3||a2==a3)||(a4==a5||a4==a6||a5==a6)){
+        if ((a1==a3||a1==a5||a5==a3)||(a4==a2||a2==a6||a4==a6)){
             JOptionPane.showMessageDialog(null, "No puede tener dos personajes iguales");
         }else{
             this.setVisible(false);
-            Principal prin = new Principal();
+            var.setTurno(0);
+            var.setVida1(5);
+            var.setVida2(5);
+            Principal prin = new Principal(var);
         }    
     }//GEN-LAST:event_continuarActionPerformed
 
     private void regresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresoActionPerformed
         this.setVisible(false);
         Inicio ini = new Inicio();
-        ini.regreso(var);
+        ini.regreso();
         ini.setVisible(true);
     }//GEN-LAST:event_regresoActionPerformed
 

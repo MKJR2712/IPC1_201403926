@@ -16,11 +16,12 @@ import java.util.Random;
  * @author MKJR
  */
 public class Posicion {
-    private int ranx,rany,dim,bomb,heart,temp=0;
+    private int ranx=0,rany=0,dim=0,bomb=0,heart=0,temp=0;
     private boolean per;
-    Variables var;
+    public Variables var;
     
-    public Posicion(){
+    public Posicion(Variables var){
+        this.var=var;
         int tam = var.getTam();
         dim = tam*tam;
         bomb = dim/10;
@@ -43,19 +44,18 @@ public class Posicion {
                 temp=temp+1;
             }
         }
-        for (int i=3;i<=tam;i++){
+        for (int i=3;i<=8;i++){
             per=false;
             while(per==false){
                 ranx = rn.nextInt(tam-1);
                 rany = rn.nextInt(tam-1);
-                if(var.interior[ranx][rany]==0){
-                    var.interior[ranx][rany]=i;
+                if(var.interior[rany][ranx]==0){
+                    var.interior[rany][ranx]=i;
                     var.posperx[i-3]=ranx;
                     var.pospery[i-3]=rany;
                     per=true;
                 }
             }
         }
-        
     }
 }

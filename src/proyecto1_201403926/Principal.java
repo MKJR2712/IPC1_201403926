@@ -5,6 +5,7 @@
  */
 package proyecto1_201403926;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
@@ -21,12 +22,13 @@ public class Principal extends javax.swing.JFrame{
      * Creates new form Principal
      */
     
-    private JPanel tablero,vid1,vid2;
+    private JPanel vid1,vid2;
     public JLabel [][] matriz,vd1,vd2;
-    private int tammat,mov,turno=0;
-    public int sec=0,min=0,tiempo;
+    private int tammat=0,mov=0,turno=0,taml;
+    public Tablero tab;
+    public int sec=0,min=0,tiempo=0;
     private String pl1,pl2;
-    public Imagenes img;
+    public Imagenes img = new Imagenes();
     public Variables var;
     public boolean juego = true;
     public void init(){
@@ -37,167 +39,161 @@ public class Principal extends javax.swing.JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
         
     }
-    public Principal(){
-        this.pl1 = var.getPl1();
-        this.pl2 = var.getPl2();
-        this.tammat = var.getTam();
-        this.var=var;
-        var.setTurno(turno);
+    public Principal(Variables var){
+        this.var = var;
+        pl1 = var.getPl1();
+        pl2 = var.getPl2();
+        tammat = var.getTam();
+        taml=700/tammat;
+        tab = new Tablero(var,this);
         init();
-        initComponents();
+        initComponents();       
         jLabel1.setText(pl1);
         jLabel2.setText(pl2);
-        var.setVida1(5);
-        var.setVida2(5);
-        add(getTablero());
         add(getVid1());
         add(getVid2());
-        Imagenes img=new Imagenes();
+        Posicion pos = new Posicion(var);
+        add(getTablero());
         dado.setIcon(img.Dado1());
-        Posicion pos = new Posicion();
-        imprimirPersona();
-        colcor1(var,img);
-        colcor2(var,img);
         jLabel5.setText(var.per[0]);
         jLabel6.setText(var.per[2]);
         jLabel7.setText(var.per[4]);
-        jLabel1.setText(var.per[1]);
+        jLabel11.setText(var.per[1]);
         jLabel8.setText(var.per[3]);
         jLabel10.setText(var.per[5]);
         this.tiempo = var.getTiempo();
         Temporizador temp=new Temporizador(this);
     }
-        
-    public void colcor1(Variables var,Imagenes img){
-        int as = 20;
+    public JPanel getTablero(){
+        tablero = new JPanel();
+        matriz= new JLabel[tammat][tammat];
+        tablero.setLayout(new GridLayout(tammat,tammat));
+        tablero.setBounds(0,0,700,700);
+        for(int i=0; i<tammat;i++){
+            for(int j=0; j<tammat;j++){
+                matriz[i][j]=new JLabel();
+                matriz[i][j].setBounds(i*taml, j*taml, taml, taml);
+                matriz[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+                matriz[i][j].setOpaque(false);
+                tablero.add(matriz[i][j],BorderLayout.CENTER);
+            }
+        }
+        tab.imprimirPersona(var, this);
+        return tablero;
+    }    
+    public void colcor1(Variables var){
         int i = var.getVida1()/4;
         int j = var.getVida1()%4;
+        JLabel lab;
         if (j!=0){
             i += 1;
+            for (int z=0; z<i ; z++){
+                if(z == i - 1){
+                    for(int w=0; w<j; w++){
+                        vd1[z][w].setIcon(img.corazon(20));
+                        vid1.repaint(z*35, w*35, 35, 35);
+                    }
+                    for(int t=j; t<4; t++){
+                        vd1[z][t].setIcon(null);
+                        vid1.repaint(z*35, t*35, 35, 35);
+                    }
+                }else{
+                    for(int w=0; w<4; w++){
+                        vd1[z][w].setIcon(img.corazon(20));
+                        vid1.repaint(z*35, w*35, 35, 35);
+                    }
+                }
+            }
         }else{
             for (int z=0; z<i ; z++){
                 for(int w=0; w<4; w++){
-                    vd1[z][w].setIcon(img.corazon(as));
+                    vd1[z][w].setIcon(img.corazon(20));
+                    vid1.repaint(z*35, w*35, 35, 35);
                 }
             }
-        }
-        for (int z=0; z<i ; z++){
-            if(z == i-1){
-                for(int w=0; w<j; w++){
-                    vd1[z][w].setIcon(img.corazon(as));
-                }
-            }else{
-                for(int w=0; w<4; w++){
-                    vd1[z][w].setIcon(img.corazon(as));
+            for(int t=i; t<4;t++){
+                for(int w=0;w<4;w++){
+                    vd1[t][w].setIcon(null);
+                    vid1.repaint(t*35, w*35, 35, 35);
                 }
             }
         }
     }
-    public void colcor2(Variables var,Imagenes img){
-        int as = 20;
+    public void colcor2(Variables var){
         int i = var.getVida2()/4;
         int j = var.getVida2()%4;
+        JLabel lab;
         if (j!=0){
             i += 1;
+            for (int z=0; z<i ; z++){
+                if(z == i-1){
+                    for(int w=0; w<j; w++){
+                        vd2[z][w].setIcon(img.corazon(20));
+                        vid2.repaint(z*35, w*35, 35, 35);
+                    }
+                    for(int t=j;t<4;t++){
+                        vd2[z][t].setIcon(null);
+                        vid2.repaint(z*35, t*35, 35, 35);
+                    }
+                }else{
+                    for(int w=0; w<4; w++){
+                        vd2[z][w].setIcon(img.corazon(20));
+                        vid2.repaint(z*35, w*35, 35, 35);
+                    }
+                }
+            }
         }else{
             for (int z=0; z<i ; z++){
                 for(int w=0; w<4; w++){
-                    vd2[z][w].setIcon(img.corazon(as));
+                    vd2[z][w].setIcon(img.corazon(20));
+                    vid2.repaint(z*35, w*35, 35, 35);
                 }
             }
-        }
-        for (int z=0; z<i ; z++){
-            if(z == i-1){
-                for(int w=0; w<j; w++){
-                    vd2[z][w].setIcon(img.corazon(as));
-                }
-            }else{
-                for(int w=0; w<4; w++){
-                    vd2[z][w].setIcon(img.corazon(as));
+            for(int t=i; t<4;t++){
+                for(int w=0;w<4;w++){
+                    vd2[t][w].setIcon(null);
+                    vid2.repaint(t*35, w*35, 35, 35);
                 }
             }
         }
     }
-    public JPanel getTablero() {
-        JPanel tablero = new JPanel();
-        matriz = new JLabel[tammat][tammat];
-        tablero.setLayout(new GridLayout(tammat, tammat));
-        tablero.setBounds(20, 20, 650, 650);
-        for (int i=0; i<tammat;i++){
-            for(int j=0; j<tammat;j++){
-                matriz [i][j] = new JLabel("");
-                tablero.add(matriz[i][j]);
-                matriz[i][j].setBorder(BorderFactory.createLineBorder(Color.black));                
-            }
-        }
-        
-        return tablero;
-    }
+    
     public JPanel getVid1(){
-        JPanel vid1 = new JPanel();
+        vid1 = new JPanel();
         vd1 = new JLabel[4][4];
         vid1.setLayout(new GridLayout(4,4));
-        vid1.setBounds(840,80,140,140);
+        vid1.setBounds(780,80,140,140);
         vid1.setBackground(Color.black);
-        for (int i=0; i<4;i++){
+        for(int i=0; i<4;i++){
             for(int j=0; j<4;j++){
-                vd1 [i][j] = new JLabel("");
-                vid1.add(vd1[i][j]);
-                vd1[i][j].setBorder(BorderFactory.createLineBorder(Color.white));                
+                vd1[i][j]=new JLabel();
+                vd1[i][j].setBounds(i*35, j*35, 35, 35);
+                vd1[i][j].setBorder(BorderFactory.createLineBorder(Color.white));
+                vd1[i][j].setOpaque(false);
+                vid1.add(vd1[i][j],BorderLayout.CENTER);
             }
         }
-        
+        colcor1(var);
         return vid1;
     }
     
     public JPanel getVid2(){
-        JPanel vid2 = new JPanel();
+        vid2 = new JPanel();
         vd2 = new JLabel[4][4];
         vid2.setLayout(new GridLayout(4,4));
-        vid2.setBounds(840,260,140,140);
+        vid2.setBounds(780,260,140,140);
         vid2.setBackground(Color.black);
-        for (int i=0; i<4;i++){
+        for(int i=0; i<4;i++){
             for(int j=0; j<4;j++){
-                vd2 [i][j] = new JLabel("");
-                vid2.add(vd2[i][j]);
-                vd2[i][j].setBorder(BorderFactory.createLineBorder(Color.white));                
+                vd2[i][j]=new JLabel();
+                vd2[i][j].setBounds(i*35, j*35, 35, 35);
+                vd2[i][j].setBorder(BorderFactory.createLineBorder(Color.white));
+                vd2[i][j].setOpaque(false);
+                vid2.add(vd2[i][j],BorderLayout.CENTER);
             }
         }
-        
+        colcor2(var);
         return vid2;
-    }
-   
-    public void imprimirPersona(){
-        for (int i=0; i<var.getTam();i++){
-            for (int j=0;j<var.getTam();j++){
-                switch(var.interior[i][j]){
-                    case 1:
-                        matriz[i][j].setIcon(img.bomba(tammat));
-                    break;
-                    case 2:
-                        matriz[i][j].setIcon(img.corazon(tammat));
-                    break;
-                    case 3:
-                        matriz[i][j].setIcon(img.Cab1(tammat));
-                    break;
-                    case 4:
-                        matriz[i][j].setIcon(img.Mag1(tammat));
-                    break;
-                    case 5:
-                        matriz[i][j].setIcon(img.Prin1(tammat));
-                    break;
-                    case 6:
-                        matriz[i][j].setIcon(img.Cab2(tammat));
-                    break;
-                    case 7:
-                        matriz[i][j].setIcon(img.Mag2(tammat));
-                    break;
-                    case 8:
-                        matriz[i][j].setIcon(img.Prin2(tammat));
-                    break;
-                }
-            }
-        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,7 +208,7 @@ public class Principal extends javax.swing.JFrame{
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         timer = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        tablero = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -246,16 +242,16 @@ public class Principal extends javax.swing.JFrame{
 
         timer.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
-        jPanel1.setOpaque(false);
+        tablero.setOpaque(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+        javax.swing.GroupLayout tableroLayout = new javax.swing.GroupLayout(tablero);
+        tablero.setLayout(tableroLayout);
+        tableroLayout.setHorizontalGroup(
+            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        tableroLayout.setVerticalGroup(
+            tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -347,8 +343,8 @@ public class Principal extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
+                .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -431,7 +427,7 @@ public class Principal extends javax.swing.JFrame{
                 .addGap(10, 10, 10)
                 .addComponent(abajo)
                 .addContainerGap(80, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -440,6 +436,11 @@ public class Principal extends javax.swing.JFrame{
     private void tirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirarActionPerformed
         mov=(int)((Math.random()*6)+1);
         var.setMov(mov);
+        turno=var.getTurno();
+        if (turno>=6){
+            turno=0;
+        }
+        var.setTurno(turno);
         Imagenes img = new Imagenes();
         switch(mov){
             case 1:
@@ -466,28 +467,46 @@ public class Principal extends javax.swing.JFrame{
         abajo.setEnabled(true);
         izq.setEnabled(true);
         der.setEnabled(true);
-        ++turno;
-        if(turno>=6){
-            turno=0;
-        }
-        var.setTurno(turno);
     }//GEN-LAST:event_tirarActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
-        MovUp movup = new MovUp();
-        
+        arriba.setEnabled(false);
+        der.setEnabled(false);
+        izq.setEnabled(false);
+        abajo.setEnabled(false);
+        tirar.setEnabled(true);
+        MovUp movup = new MovUp(var,this,tab);
+        movup.start();
     }//GEN-LAST:event_arribaActionPerformed
 
     private void derActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derActionPerformed
-        // TODO add your handling code here:
+        arriba.setEnabled(false);
+        der.setEnabled(false);
+        izq.setEnabled(false);
+        abajo.setEnabled(false);
+        tirar.setEnabled(true);
+        MovDer movder = new MovDer(var,this,tab);
+        movder.start();
     }//GEN-LAST:event_derActionPerformed
 
     private void izqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izqActionPerformed
-        // TODO add your handling code here:
+        arriba.setEnabled(false);
+        der.setEnabled(false);
+        izq.setEnabled(false);
+        abajo.setEnabled(false);
+        tirar.setEnabled(true);
+        MovIzq movizq = new MovIzq(var,this,tab);
+        movizq.start();
     }//GEN-LAST:event_izqActionPerformed
 
     private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
-        // TODO add your handling code here:
+        arriba.setEnabled(false);
+        der.setEnabled(false);
+        izq.setEnabled(false);
+        abajo.setEnabled(false);
+        tirar.setEnabled(true);
+        MovDown movdown = new MovDown(var,this,tab);
+        movdown.start();
     }//GEN-LAST:event_abajoActionPerformed
 
     /**
@@ -511,7 +530,7 @@ public class Principal extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel tablero;
     public javax.swing.JLabel timer;
     private javax.swing.JButton tirar;
     // End of variables declaration//GEN-END:variables

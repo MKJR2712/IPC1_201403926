@@ -138,9 +138,6 @@
         </Property>
         <Property name="actionCommand" type="java.lang.String" value="&lt;none&gt;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Configuracion_combo"/>
       </AuxValues>
@@ -171,9 +168,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Jugador2"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="p2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label2">
       <Properties>
@@ -196,9 +190,9 @@
           <SpinnerEditor format="00" type="3"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="timerStateChanged"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Inicio_timer"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="salir">
       <Properties>

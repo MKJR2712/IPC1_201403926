@@ -12,13 +12,13 @@ import java.util.logging.Logger;
  *
  * @author MKJR
  */
-public class MovUp extends Thread{
+public class MovDer extends Thread{
     private int cantidad,turno,tam=0, w=0,u=0,ejey,ejex,v1,v2,mov;
     public Tablero tab;
     private int[] vect;
     public Variables var;
     public Principal prin;
-    public MovUp(Variables var, Principal prin, Tablero tab){
+    public MovDer(Variables var, Principal prin, Tablero tab){
         this.prin=prin;
         this.var=var;
         this.tab = tab;
@@ -28,12 +28,12 @@ public class MovUp extends Thread{
         ejey=var.pospery[turno];
         ejex=var.posperx[turno];
         vect = new int[tam];
-        vect = var.interior[ejex];
+        vect = var.interior[ejey];
         v1=var.getVida1();
         v2=var.getVida2();
         turno += 1;
         var.setTurno(turno);
-    }   
+    }        
     public void mover(int cantidad){
         if(cantidad==0){
             if(w==1){
@@ -56,11 +56,11 @@ public class MovUp extends Thread{
             var.setTurno(turno);
             return;
         }else{
-            if ((ejey-1) < 0){
+            if ((ejex+1) > (tam-1)){
                 if(tam%2==0){
                     prin.matriz[ejey][ejex].setIcon(null);
-                    vect[ejey]=w;
-                    var.interior[ejex]=vect;
+                    vect[ejex]=w;
+                    var.interior[ejey]=vect;
                     CaracolPar c= new CaracolPar(var,prin);
                     tab.imprimirPersona(var, prin);
                     if((turno-1)%2==0){
@@ -74,8 +74,8 @@ public class MovUp extends Thread{
                     mover(mov);
                 }else{
                     prin.matriz[ejey][ejex].setIcon(null);
-                    vect[ejey]=w;
-                    var.interior[ejex]=vect;
+                    vect[ejex]=w;
+                    var.interior[ejey]=vect;
                     CaracolImpar c= new CaracolImpar(var,prin);
                     tab.imprimirPersona(var, prin);
                     if((turno-1)%2==0){
@@ -90,43 +90,43 @@ public class MovUp extends Thread{
                 }
             }else{
                 try{
-                    if(vect[ejey-1]==1 || vect[ejey-1]==2){
+                    if(vect[ejex+1]==1 || vect[ejex+1]==2){
                         u = w;
-                        w = vect[ejey-1];
-                        vect[ejey-1]=vect[ejey];
-                        vect[ejey] = u;
+                        w = vect[ejex+1];
+                        vect[ejex+1]=vect[ejex];
+                        vect[ejex] = u;
                         prin.matriz[ejey][ejex].setIcon(null);
                         var.interior[ejey][ejex] = u;
-                        ejey-=1;
-                        var.interior[ejex]=vect;
-                        var.pospery[turno-1]=ejey;
+                        ejex+=1;
+                        var.interior[ejey]=vect;
+                        var.posperx[turno-1]=ejex;
                         tab.imprimirPersona(var, prin);
-                        mov= cantidad-1;
+                        mov = cantidad-1;
                         Thread.sleep(500);
                         mover(mov);
-                    }else if(vect[ejey-1]>2){
+                    }else if(vect[ejex+1]>2){
                         //generar random nueva direccion
                         System.out.println("personaje enfrente");
                         mov=0;
                         mover(mov);
-                    }else if(vect[ejey-1]==0){
+                    }else if(vect[ejex+1]==0){
                         //mover una posicion
                         u = w;
-                        w = vect[ejey-1];
-                        vect[ejey-1] = vect[ejey];
-                        vect[ejey] = u;
+                        w = vect[ejex+1];
+                        vect[ejex+1] = vect[ejex];
+                        vect[ejex] = u;
                         prin.matriz[ejey][ejex].setIcon(null);                      
                         var.interior[ejey][ejex]=u;
-                        ejey-=1;
-                        var.interior[ejex]=vect;
-                        var.pospery[turno-1]=ejey;
+                        ejex+=1;
+                        var.interior[ejey]=vect;
+                        var.posperx[turno-1]=ejex;
                         tab.imprimirPersona(var, prin);
-                        mov=cantidad-1;
+                        mov = cantidad-1;
                         Thread.sleep(500);
                         mover(mov);
                     }
                 }   catch (InterruptedException ex) {
-                    Logger.getLogger(MovUp.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MovDer.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
