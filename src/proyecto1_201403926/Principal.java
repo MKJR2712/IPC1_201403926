@@ -63,7 +63,7 @@ public class Principal extends javax.swing.JFrame{
         jLabel8.setText(var.per[3]);
         jLabel10.setText(var.per[5]);
         this.tiempo = var.getTiempo();
-        Temporizador temp=new Temporizador(this);
+        Temporizador temp = new Temporizador(var, this);
     }
     public JPanel getTablero(){
         tablero = new JPanel();

@@ -14,7 +14,7 @@ public class Atacar {
     private int tur,ejex,ejey,v2,v1,tam;
     
     Principal prin;
-    public Atacar(Variables var){
+    public Atacar(Variables var,Principal prin){
         tur = var.getTurno()-1;
         ejey=var.pospery[tur];
         ejex=var.posperx[tur];
@@ -23,7 +23,7 @@ public class Atacar {
         tam=var.getTam()-1;
         switch(var.orden[tur]){
             case 3:
-                for(int i=1;i>3;i++){
+                for(int i=1;i<3;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==4||var.interior[ejey-i][ejex]==6||var.interior[ejey-i][ejex]==8){
                             var.setVida2(v2-1);
@@ -51,7 +51,7 @@ public class Atacar {
                 }
             break;
             case 5:
-                for(int i=1;i>5;i++){
+                for(int i=1;i<5;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==4||var.interior[ejey-i][ejex]==6||var.interior[ejey-i][ejex]==8){
                             var.setVida2(v2-1);
@@ -79,7 +79,7 @@ public class Atacar {
                 }
             break;
             case 7:
-                if(ejey-1>0){
+                if(ejey-1<0){
                     if(var.interior[ejey-1][ejex]==4){
                         for(int i=0;i<6;i++){
                             if(var.orden[i]==4){
@@ -172,7 +172,7 @@ public class Atacar {
                     }
                 }
             case 4:
-                for(int i=1;i>3;i++){
+                for(int i=1;i<3;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==3||var.interior[ejey-i][ejex]==5||var.interior[ejey-i][ejex]==7){
                             var.setVida1(v1-1);
@@ -200,7 +200,7 @@ public class Atacar {
                 }
             break;
             case 6:
-                for(int i=1;i>5;i++){
+                for(int i=1;i<5;i++){
                     if(ejey-i>0){
                         if(var.interior[ejey-i][ejex]==3||var.interior[ejey-i][ejex]==5||var.interior[ejey-i][ejex]==7){
                             var.setVida1(v1-1);
@@ -228,7 +228,7 @@ public class Atacar {
                 }
             break;
             case 8:
-                if(ejey-1>0){
+                if(ejey-1<0){
                     if(var.interior[ejey-1][ejex]==3){
                         for(int i=0;i<6;i++){
                             if(var.orden[i]==3){

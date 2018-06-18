@@ -50,7 +50,7 @@ public class Posicion {
                 ranx = rn.nextInt(tam-1);
                 rany = rn.nextInt(tam-1);
                 if(var.interior[rany][ranx]==0){
-                    var.interior[rany][ranx]=i;
+                    var.interior[rany][ranx] = var.orden[i-3];
                     var.posperx[i-3]=ranx;
                     var.pospery[i-3]=rany;
                     per=true;

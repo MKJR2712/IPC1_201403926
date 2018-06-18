@@ -18,6 +18,10 @@ public class Validar {
     Temporizador tem;
     Persona[] per;
     public Validar(Variables var, Principal prin){
+        min=tem.min;
+        sec=tem.sec;
+    }
+    public void validarVida(Variables var, Principal prin){    
         if(var.getVida1()==0){
             tem.t.cancel();
             JOptionPane.showInputDialog("Ganador: " + var.getPl2());
@@ -53,7 +57,8 @@ public class Validar {
         }
     }
     public void validarTiempo(Principal prin){
-        if(var.getTiempo()==tem.min){
+        tem=new Temporizador(var ,prin);
+        if(var.getTiempo()==min){
             if(var.getVida1() > var.getVida2()){
                 JOptionPane.showInputDialog("Ganador: " + var.getPl1());
                 prin.tirar.setEnabled(false);

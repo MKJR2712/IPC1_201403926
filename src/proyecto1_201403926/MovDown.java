@@ -43,34 +43,41 @@ public class MovDown extends Thread{
                     var.setVida1(v1-1);
                     prin.colcor1(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }else{
                     var.setVida2(v2-1);
                     prin.colcor2(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }
             }else if(w==2){
                 if((turno-1)%2==0){
                     var.setVida1(v1+1);
                     prin.colcor1(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }else{
                     var.setVida2(v2+1);
                     prin.colcor2(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }
             }
             if(var.atk[turno-1]==true){
-                Atacar at = new Atacar(var);
+                Atacar at = new Atacar(var,prin);
                 Validar v= new Validar(var,prin);
+                v.validarVida(var, prin);
             }else{
                 if((turno-1)%2==0){
                     var.setVida1(v1-1);
                     prin.colcor1(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }else{
                     var.setVida2(v2-1);
                     prin.colcor2(var);
                     Validar v= new Validar(var,prin);
+                    v.validarVida(var, prin);
                 }
                 var.atk[turno-1]=true;
             }
@@ -90,10 +97,12 @@ public class MovDown extends Thread{
                         var.setVida1(v1-1);
                         prin.colcor1(var);
                         Validar v= new Validar(var,prin);
+                        v.validarVida(var, prin);
                     }else{
                         var.setVida2(v2-1);
                         prin.colcor2(var);
                         Validar v= new Validar(var,prin);
+                        v.validarVida(var, prin);
                     }
                     mov=0;
                     return;
@@ -109,10 +118,12 @@ public class MovDown extends Thread{
                         var.setVida1(v1-1);
                         prin.colcor1(var);
                         Validar v= new Validar(var,prin);
+                        v.validarVida(var, prin);
                     }else{
                         var.setVida2(v2-1);
                         prin.colcor2(var);
                         Validar v= new Validar(var,prin);
+                        v.validarVida(var, prin);
                     }
                     mov=0;
                     return;

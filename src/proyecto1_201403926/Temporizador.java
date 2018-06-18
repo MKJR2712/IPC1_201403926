@@ -15,11 +15,12 @@ public class Temporizador {
     public int sec=0,min=0;
     public String tiempo;
     public Timer t;
-    Validar v;
-    public Temporizador(Principal prin){
+    boolean th;
+    public Temporizador(Variables var, Principal prin){
         t = new Timer();
+        th=false;
         TimerTask tarea = new TimerTask() {
-
+        
             @Override
             public void run() {
                 ++sec;
@@ -32,9 +33,10 @@ public class Temporizador {
                 if(min == prin.tiempo){
                     t.cancel();
                     prin.juego=false;
-                    v.validarTiempo(prin);
+                    Validar v= new Validar(var,prin);
                 }
             }
+            
         };
         t.schedule(tarea, 0, 1000);
         
