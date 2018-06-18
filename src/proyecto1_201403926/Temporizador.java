@@ -12,10 +12,12 @@ import java.util.Timer;
  * @author MKJR
  */
 public class Temporizador {
-    private int sec=0,min=0;
-    private String tiempo;
+    public int sec=0,min=0;
+    public String tiempo;
+    public Timer t;
+    Validar v;
     public Temporizador(Principal prin){
-        Timer t = new Timer();
+        t = new Timer();
         TimerTask tarea = new TimerTask() {
 
             @Override
@@ -27,9 +29,10 @@ public class Temporizador {
                 }
                 tiempo = (min<=9?"0":"") + min + " : "+ (sec<=9?"0":"") + sec;
                 prin.timer.setText(tiempo);
-                if(min==prin.tiempo){
+                if(min == prin.tiempo){
                     t.cancel();
                     prin.juego=false;
+                    v.validarTiempo(prin);
                 }
             }
         };

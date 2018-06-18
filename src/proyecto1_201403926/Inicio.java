@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package proyecto1_201403926;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
@@ -18,12 +22,17 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form Inicio
      */
     public Variables var = new Variables();
-    
+    Top tp;
+    Persona[] vecPersona;
     public Inicio() {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         ((DefaultEditor)timer.getEditor()).getTextField().setEditable(false);
+        setVisible(true);
+        for(int i=0;i<6;i++){
+            var.atk[i]=true;
+        }
     }
     public void regreso(){    
         initComponents();
@@ -49,7 +58,7 @@ public class Inicio extends javax.swing.JFrame {
         p2 = new javax.swing.JTextField();
         label2 = new javax.swing.JLabel();
         timer = new javax.swing.JSpinner();
-        salir = new javax.swing.JButton();
+        top = new javax.swing.JButton();
 
         label1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -93,11 +102,11 @@ public class Inicio extends javax.swing.JFrame {
         timer.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         timer.setEditor(new javax.swing.JSpinner.NumberEditor(timer, "00"));
 
-        salir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        salir.setText("Salir");
-        salir.addActionListener(new java.awt.event.ActionListener() {
+        top.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        top.setText("Top 10");
+        top.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
+                topActionPerformed(evt);
             }
         });
 
@@ -125,8 +134,8 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(continuar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(salir)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(top)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +155,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(continuar)
-                    .addComponent(salir))
+                    .addComponent(top))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -173,9 +182,23 @@ public class Inicio extends javax.swing.JFrame {
         Orden or = new Orden(var);
     }//GEN-LAST:event_continuarActionPerformed
 
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_salirActionPerformed
+    private void topActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topActionPerformed
+        ManejadorArchivo ma = new ManejadorArchivo();
+        ma.crear();
+        try {
+            vecPersona= ma.obtenerPersonas("Archivo.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DefaultListModel modelo=new DefaultListModel();
+        int ta = vecPersona.length;
+        for(int i=0;i<ta;i++){
+            modelo.add(i, vecPersona[i].getNombre()+"->" + vecPersona[i].getTiempo());
+        }
+        tp.lista.setModel(modelo);
+        this.setVisible(false);
+        tp.setVisible(true);
+    }//GEN-LAST:event_topActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,7 +244,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel label2;
     private javax.swing.JTextField p1;
     private javax.swing.JTextField p2;
-    private javax.swing.JButton salir;
     private javax.swing.JSpinner timer;
+    private javax.swing.JButton top;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,7 +47,8 @@ public class Principal extends javax.swing.JFrame{
         taml=700/tammat;
         tab = new Tablero(var,this);
         init();
-        initComponents();       
+        initComponents();
+        nuevo.setVisible(false);
         jLabel1.setText(pl1);
         jLabel2.setText(pl2);
         add(getVid1());
@@ -181,7 +182,7 @@ public class Principal extends javax.swing.JFrame{
         vid2 = new JPanel();
         vd2 = new JLabel[4][4];
         vid2.setLayout(new GridLayout(4,4));
-        vid2.setBounds(780,260,140,140);
+        vid2.setBounds(780,265,140,140);
         vid2.setBackground(Color.black);
         for(int i=0; i<4;i++){
             for(int j=0; j<4;j++){
@@ -224,6 +225,7 @@ public class Principal extends javax.swing.JFrame{
         der = new javax.swing.JButton();
         izq = new javax.swing.JButton();
         abajo = new javax.swing.JButton();
+        nuevo = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -235,12 +237,17 @@ public class Principal extends javax.swing.JFrame{
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Jugador 1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Jugador2");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        timer.setBackground(new java.awt.Color(255, 255, 255));
         timer.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        timer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 0, 255), null, null));
+        timer.setOpaque(true);
 
         tablero.setOpaque(false);
 
@@ -252,44 +259,54 @@ public class Principal extends javax.swing.JFrame{
         );
         tableroLayout.setVerticalGroup(
             tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 705, Short.MAX_VALUE)
         );
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Tiempo");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.setOpaque(true);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Personajes");
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Personajes");
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Personajes");
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Personajes");
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Personajes");
+        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Personajes");
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Personajes");
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Personajes");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         dado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         dado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -338,6 +355,15 @@ public class Principal extends javax.swing.JFrame{
             }
         });
 
+        nuevo.setText("Juego Nuevo");
+        nuevo.setEnabled(false);
+        nuevo.setOpaque(false);
+        nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -378,7 +404,8 @@ public class Principal extends javax.swing.JFrame{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(izq)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(der)))))
+                                .addComponent(der))
+                            .addComponent(nuevo))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -416,7 +443,9 @@ public class Principal extends javax.swing.JFrame{
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
-                        .addGap(140, 140, 140)
+                        .addGap(106, 106, 106)
+                        .addComponent(nuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tirar)))
                 .addGap(24, 24, 24)
                 .addComponent(arriba)
@@ -426,7 +455,7 @@ public class Principal extends javax.swing.JFrame{
                     .addComponent(der))
                 .addGap(10, 10, 10)
                 .addComponent(abajo)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addComponent(tablero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -509,15 +538,19 @@ public class Principal extends javax.swing.JFrame{
         movdown.start();
     }//GEN-LAST:event_abajoActionPerformed
 
+    private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
+        Inicio ini = new Inicio();
+    }//GEN-LAST:event_nuevoActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton abajo;
-    private javax.swing.JButton arriba;
+    public javax.swing.JButton abajo;
+    public javax.swing.JButton arriba;
     private javax.swing.JLabel dado;
-    private javax.swing.JButton der;
-    private javax.swing.JButton izq;
+    public javax.swing.JButton der;
+    public javax.swing.JButton izq;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -530,8 +563,9 @@ public class Principal extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JButton nuevo;
     public javax.swing.JPanel tablero;
     public javax.swing.JLabel timer;
-    private javax.swing.JButton tirar;
+    public javax.swing.JButton tirar;
     // End of variables declaration//GEN-END:variables
 }

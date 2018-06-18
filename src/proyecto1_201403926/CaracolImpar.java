@@ -33,6 +33,8 @@ public class CaracolImpar {
             for(i=b; i>=c-1; i--){
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -41,6 +43,8 @@ public class CaracolImpar {
             for(j=i+2; j<=b+1; j++){
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -49,6 +53,8 @@ public class CaracolImpar {
             for(i=c; i<=b+1; i++){
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -57,6 +63,8 @@ public class CaracolImpar {
             for( j=b; j>=c; j--){
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }

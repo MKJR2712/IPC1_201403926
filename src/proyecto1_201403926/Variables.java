@@ -11,19 +11,28 @@ package proyecto1_201403926;
  * @author MKJR
  */
 public class Variables {
-    private int tam=0,tiempo=0,vida1=0,vida2=0,mov=0,turno=0;
+    private int tam=0,tiempo=0,vida1=0,vida2=0,mov=0,turno=0,duracion;
     public int [][] interior;
     private String pl1,pl2;
     public int[] orden =new int[6];
     public int[] abc=new int[6];
     public int[] posperx= new int[6];
     public int[] pospery= new int[6];
+    public boolean[] atk=new boolean[6];
     public String[] per=new String[6];
 
     public int getMov() {
         return mov;
     }
 
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+    
     public void setMov(int mov) {
         this.mov = mov;
     }

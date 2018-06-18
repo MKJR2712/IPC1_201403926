@@ -33,6 +33,8 @@ public class CaracolPar {
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
                     var.interior[i][j]=m[i][j];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -42,6 +44,8 @@ public class CaracolPar {
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
                     var.interior[i][j]=m[i][j];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -51,6 +55,8 @@ public class CaracolPar {
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
                     var.interior[i][j]=m[i][j];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
@@ -60,6 +66,8 @@ public class CaracolPar {
                 if (m[i][j]==0){
                     m[i][j]=var.orden[tur-1];
                     var.interior[i][j]=m[i][j];
+                    var.posperx[tur-1]=j;
+                    var.pospery[tur-1]=i;
                     x=true;
                     return;
                 }
